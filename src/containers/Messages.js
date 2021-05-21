@@ -6,7 +6,5 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = () => ({});
-const componentToConnect = connect(mapStateToProps, mapDispatchToProps);
-const connectedComponent = componentToConnect(Messages);
 
-export default connectedComponent;
+export default connect(mapStateToProps, mapDispatchToProps)(Messages);

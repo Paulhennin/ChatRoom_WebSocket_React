@@ -1,0 +1,8 @@
+@use 'src/styles/vars' as v;
+
+.messages {
+  padding: v.$gutter * 2;
+  flex: 1;
+  overflow: auto;
+  scroll-padding-bottom: 100vh;
+}

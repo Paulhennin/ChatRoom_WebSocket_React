@@ -6,13 +6,16 @@ import Message from 'src/components/Message';
 import './style.scss';
 
 export default function Messages({ messages }) {
-  const chatBox = messages.map((message, i) => {
+  const chatBox = messages.map((message) => {
     console.log(message);
-    return <Message text={message} key={i} />;
+    return (<Message
+      key={message.id}
+      {...message}
+    />
+    );
   });
   return (
     <div className="messages">
-      Boite à messages
       {chatBox}
     </div>
   );

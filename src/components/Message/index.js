@@ -2,14 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './style.scss';
 
-export default function Message({ text }) {
+export default function Message({ author, content }) {
   return (
     <div className="message">
-      {text}
+      <p className="message__author">{author}</p>
+      <p className="message__content">{content}</p>
     </div>
   );
 }
 
 Message.propTypes = {
-  text: PropTypes.string.isRequired,
-}
+  author: PropTypes.string.isRequired,
+  content: PropTypes.string.isRequired,
+};

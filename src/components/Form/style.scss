@@ -1,0 +1,19 @@
+@use 'src/styles/vars' as v;
+
+.form {
+  display: flex;
+  &__input {
+    flex: 1;
+    border: none;
+    padding: v.$gutter * 2;
+    font-size: 1.5em;
+    &::placeholder {
+      font-size: inherit;
+      opacity: .5;
+    }
+  }
+  &__button {
+    border: none;
+    width: 100px;
+  }
+}

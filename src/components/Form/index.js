@@ -12,12 +12,23 @@ export default function Form({ newMessage, onSubmitMessage, onChangeMessage }) {
   };
   return (
     <div>
-      <form action="" onSubmit={handleMessageClick}>
+      <form
+        className="form"
+        onSubmit={handleMessageClick}
+      >
         <input
+          className="form__input"
           type="text"
           onChange={handleMessageChange}
+          placeholder="Saisir votre message..."
           value={newMessage}
         />
+        <button
+          className="form__button"
+          type="submit"
+        >
+          Envoyer
+        </button>
       </form>
     </div>
   );

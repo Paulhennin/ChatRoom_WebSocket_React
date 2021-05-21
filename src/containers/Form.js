@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Form from 'src/components/Form';
-import { pushNewMessage, pushNewInput} from '../actions';
+import { pushNewMessage, pushNewInput } from '../actions';
 
 const mapStateToProps = (state) => ({
   newMessage: state.newMessage,
