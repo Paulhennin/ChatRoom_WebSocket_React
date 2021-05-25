@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Field from 'src/containers/Field';
 
 import './style.scss';
 
@@ -7,30 +8,25 @@ export default function Setting({
   isOpen,
   onClickShowForm,
   onSubmitUserForm,
-  onChangeEmail,
-  onChangePwd,
-  emailValue,
-  pwdValue,
-  user,
 }) {
   const handleSubmit = (event) => {
     event.preventDefault();
-    onSubmitUserForm(event.target[0].value, event.target[1].value);
-  };
-
-  const handleChangeEmail = (event) => {
-    onChangeEmail(event.target.value);
-  };
-
-  const handleChangePwd = (event) => {
-    onChangePwd(event.target.value);
+    onSubmitUserForm();
+    // console.log(`submit du form`);
+    /*
+    axios.post('http://localhost:3001/login', {
+      email: 'acidman@herocorp.io',
+      password: 'fructis',
+    })
+      .then((response) => console.log(`response`, response))
+      .catch((error) => console.log(`error`, error));
+  */
   };
 
   const handleClick = () => {
     onClickShowForm();
   };
-  console.log('user', user);
-  const classnames = isOpen ? 'rotate toggler toggler--open' : 'toggler';
+  const classnames = isOpen ? 'rotate toggler--open' : 'toggler';
   return (
     <div className="setting">
       <button
@@ -42,17 +38,15 @@ export default function Setting({
       </button>
       {isOpen && (
         <form className="setting__form" onSubmit={handleSubmit}>
-          <input
-            value={pwdValue}
-            className="setting__form-input"
+          <Field
+            type="email"
+            name="email"
             placeholder="Email"
-            onChange={handleChangeEmail}
           />
-          <input
-            value={emailValue}
-            className="setting__form-input"
-            placeholder="Mot de passe"
-            onChange={handleChangePwd}
+          <Field
+            type="password"
+            name="password"
+            placeholder="Password"
           />
           <button type="submit" className="setting__form-button">Envoyer</button>
         </form>
@@ -65,9 +59,4 @@ Setting.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   onClickShowForm: PropTypes.func.isRequired,
   onSubmitUserForm: PropTypes.func.isRequired,
-  onChangeEmail: PropTypes.func.isRequired,
-  onChangePwd: PropTypes.func.isRequired,
-  emailValue: PropTypes.string.isRequired,
-  pwdValue: PropTypes.string.isRequired,
-  user: PropTypes.object.isRequired,
 };

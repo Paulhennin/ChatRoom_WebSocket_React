@@ -1,11 +1,17 @@
+
+// CHATBOX
 export const SEND_NEW_MESSAGE = 'SEND_NEW_MESSAGE';
 export const SEND_NEW_INPUT = 'SEND_NEW_INPUT';
+// OPEN USER SIGNIN
 export const OPEN_STATE = 'OPEN_STATE';
+export const SAVE_PSEUDO = 'SAVE_PSEUDO';
+export const LOGIN = 'LOGIN';
 
-export const CHANGE_EMAIL = 'CHANGE_EMAIL';
-export const CHANGE_PWD = 'CHANGE_PWD';
+// USER FORM
+export const CHANGE_VALUE = 'CHANGE_VALUE';
 export const SUBMIT_USER_FORM = 'SUBMIT_USER_FORM';
 
+// CHAT MESSAGE START
 export const pushNewMessage = (newMessage) => ({
   type: SEND_NEW_MESSAGE,
   newMessage: newMessage,
@@ -15,23 +21,32 @@ export const pushNewInput = (newInput) => ({
   type: SEND_NEW_INPUT,
   newInput: newInput,
 });
+// CHAT MESSAGE END
 
+// ACTION ON FORM USER
 export const changeOpenState = () => ({
   type: OPEN_STATE,
 });
 
-export const changeEmailValue = (value) => ({
-  type: CHANGE_EMAIL,
-  newInput: value,
+// CHANGE INPUT EMAIL / PASSWORD
+export const changeValue = (value, key) => ({
+  type: CHANGE_VALUE,
+  value,
+  key,
 });
 
-export const changePwdValue = (value) => ({
-  type: CHANGE_PWD,
-  newInput: value,
-});
-
+// SUBMIT FORM USER
 export const submitUserForm = (email, pwd) => ({
   type: SUBMIT_USER_FORM,
   email: email,
   pwd: pwd,
+});
+
+export const login = () => ({
+  type: LOGIN,
+});
+
+export const savePseudo = (pseudo) => ({
+  type: SAVE_PSEUDO,
+  pseudo,
 });

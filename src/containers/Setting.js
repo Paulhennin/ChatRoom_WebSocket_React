@@ -2,9 +2,7 @@ import { connect } from 'react-redux';
 import Setting from 'src/components/Setting';
 import {
   changeOpenState,
-  changeEmailValue,
-  changePwdValue,
-  submitUserForm,
+  login,
 } from '../actions';
 
 const mapStateToProps = (state) => ({
@@ -15,26 +13,14 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  // exemple de fonction pour dispatch
+  // Toggle
   onClickShowForm: () => {
     const action = changeOpenState();
-    console.log('ici je lance ma nouvelle fonction', action);
     dispatch(action);
   },
-  onChangeEmail: (value) => {
-    const action = changeEmailValue(value);
-    console.log('email value');
-    dispatch(action);
-  },
-  onChangePwd: (value) => {
-    const action = changePwdValue(value);
-    console.log('Pwd Value');
-    dispatch(action);
-  },
-  onSubmitUserForm: (user, pwd) => {
-    const action = submitUserForm(user, pwd);
-    console.log('On submit form');
-    dispatch(action);
+  // Submit form User
+  onSubmitUserForm: () => {
+    dispatch(login());
   },
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Setting);

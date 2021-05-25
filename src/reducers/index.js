@@ -2,9 +2,8 @@ import {
   SEND_NEW_MESSAGE,
   SEND_NEW_INPUT,
   OPEN_STATE,
-  CHANGE_EMAIL,
-  CHANGE_PWD,
-  SUBMIT_USER_FORM,
+  CHANGE_VALUE,
+  SAVE_PSEUDO,
 } from 'src/actions';
 import { getHighestId } from 'src/selectors';
 
@@ -12,7 +11,7 @@ const initialState = {
   messages: [
     {
       id: 1,
-      author: 'Super chat',
+      author: 'Jean Michel',
       content: 'Salut ça va ?',
     },
     {
@@ -34,12 +33,8 @@ const initialState = {
   pseudo: 'Anonyme',
   newMessage: '',
   isOpen: false,
-  inputUserEmail: '',
-  inputUserPwd: '',
-  session: {
-    email: '',
-    password: '',
-  },
+  email: '',
+  password: '',
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -66,23 +61,15 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         isOpen: !state.isOpen,
       };
-    case CHANGE_EMAIL:
+    case CHANGE_VALUE:
       return {
         ...state,
-        inputUserEmail: action.newInput,
+        [action.key]: action.value,
       };
-    case CHANGE_PWD:
+    case SAVE_PSEUDO:
       return {
         ...state,
-        inputUserPwd: action.newInput,
-      };
-    case SUBMIT_USER_FORM:
-      return {
-        ...state,
-        session: {
-          user: action.email,
-          password: action.pwd,
-        },
+        pseudo: action.pseudo,
       };
     default:
       return state;
