@@ -1,15 +1,14 @@
 import { connect } from 'react-redux';
 import Form from 'src/components/Form';
-import { pushNewMessage, pushNewInput } from '../actions';
+import { sendMessage, pushNewInput } from '../actions';
 
 const mapStateToProps = (state) => ({
   newMessage: state.newMessage,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onSubmitMessage: (value) => {
-    const action = pushNewMessage(value);
-    console.log('je push le nouveau message', action);
+  onSubmitMessage: () => {
+    const action = sendMessage();
     dispatch(action);
   },
   onChangeMessage: (value) => {

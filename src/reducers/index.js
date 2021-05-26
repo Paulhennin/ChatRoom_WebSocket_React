@@ -1,5 +1,5 @@
 import {
-  SEND_NEW_MESSAGE,
+  ADD_MESSAGE,
   SEND_NEW_INPUT,
   OPEN_STATE,
   CHANGE_VALUE,
@@ -44,18 +44,17 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         newMessage: action.newInput,
       };
-    case SEND_NEW_MESSAGE:
-      const maxId = getHighestId(state.messages);
-      const message = {
-        id: maxId + 1,
-        author: state.pseudo,
-        content: state.newMessage,
-      }
+    case ADD_MESSAGE: {
+      const newMessages = [
+        ...state.messages,
+        action.message,
+      ];
       return {
         ...state,
-        messages: [...state.messages, message],
         newMessage: '',
+        messages: newMessages,
       };
+    }
     case OPEN_STATE:
       return {
         ...state,
@@ -70,6 +69,7 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         pseudo: action.pseudo,
+        isOpen: !state.isOpen,
       };
     default:
       return state;

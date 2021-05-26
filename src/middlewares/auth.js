@@ -12,7 +12,6 @@ const auth = (store) => (next) => (action) => {
       })
         .then((response) => {
           console.log(`response`, response);
-          console.log(`savePseudo`, savePseudo(response.data.pseudo));
           const savePseudoAction = savePseudo(response.data.pseudo);
           store.dispatch(savePseudoAction);
         })

@@ -1,14 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './style.scss';
+import { Send } from 'react-feather';
+import classNames from 'classnames';
 
 export default function Form({ newMessage, onSubmitMessage, onChangeMessage }) {
+  const [error, setError] = useState();
+
   const handleMessageChange = (event) => {
     onChangeMessage(event.target.value);
   };
   const handleMessageClick = (event) => {
     event.preventDefault();
-    onSubmitMessage(newMessage);
+    if (newMessage.length >= 2) {
+      setError('');
+      onSubmitMessage();
+    }
+    else {
+      setError('Vous devez mettre au moins 3 caractères');
+    }
   };
   return (
     <div>
@@ -17,17 +27,17 @@ export default function Form({ newMessage, onSubmitMessage, onChangeMessage }) {
         onSubmit={handleMessageClick}
       >
         <input
-          className="form__input"
+          className={classNames('form__input', { 'form__input--error': error })}
           type="text"
-          onChange={handleMessageChange}
           placeholder="Saisir votre message..."
+          onChange={handleMessageChange}
           value={newMessage}
         />
         <button
           className="form__button"
           type="submit"
         >
-          Envoyer
+          <Send color="#1da5ff" size={48} />
         </button>
       </form>
     </div>

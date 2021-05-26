@@ -4,9 +4,19 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="x-ua-compatible" content="ie=edge" />
-        <title>Modele</title>
+		<title>Modele</title>
+        <script src="http://localhost:3001/socket.io/socket.io.js"></script>
     </head>
     <body>
-        <div id="root"></div>
+		<div id="root"></div>
+		<!-- <script src="http://localhost:3001/socket.io/socket.io.js"></script>
+		<script>
+			const socket = window.io('http://localhost:3001');
+
+			socket.on('server_message', (res) => {
+            	console.log(`le serveur envoie un message`, res);
+		  	});
+			socket.emit('client_message', {author:'Burt', content: 'blabla'});
+		</script> -->
     </body>
 </html>

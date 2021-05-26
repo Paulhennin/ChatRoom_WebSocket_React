@@ -5,11 +5,9 @@ import './styles.scss';
 
 export default function Field({ type, name, placeholder, value, onChangeValue }) {
   const handleOnChange = (event) => {
-    console.log('je tape au clavier dans Field', event.target.value);
     onChangeValue(event.target.value);
   };
 
-  
   return (
     <div className="field">
       <input

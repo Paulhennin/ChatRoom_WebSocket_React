@@ -1,6 +1,7 @@
 
 // CHATBOX
-export const SEND_NEW_MESSAGE = 'SEND_NEW_MESSAGE';
+export const ADD_MESSAGE = 'ADD_MESSAGE';
+export const SEND_MESSAGE = 'SEND_MESSAGE';
 export const SEND_NEW_INPUT = 'SEND_NEW_INPUT';
 // OPEN USER SIGNIN
 export const OPEN_STATE = 'OPEN_STATE';
@@ -10,11 +11,14 @@ export const LOGIN = 'LOGIN';
 // USER FORM
 export const CHANGE_VALUE = 'CHANGE_VALUE';
 export const SUBMIT_USER_FORM = 'SUBMIT_USER_FORM';
+// WS CONNECT
+export const WS_CONNECT = 'WS_CONNECT';
 
 // CHAT MESSAGE START
-export const pushNewMessage = (newMessage) => ({
-  type: SEND_NEW_MESSAGE,
-  newMessage: newMessage,
+
+export const addMessage = (message) => ({
+  type: ADD_MESSAGE,
+  message,
 });
 
 export const pushNewInput = (newInput) => ({
@@ -49,4 +53,12 @@ export const login = () => ({
 export const savePseudo = (pseudo) => ({
   type: SAVE_PSEUDO,
   pseudo,
+});
+
+export const wsConnect = () => ({
+  type: WS_CONNECT,
+});
+
+export const sendMessage = () => ({
+  type: SEND_MESSAGE,
 });

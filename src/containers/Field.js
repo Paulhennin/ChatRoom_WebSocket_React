@@ -3,7 +3,6 @@ import Field from 'src/components/Field';
 import { changeValue } from '../actions';
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(ownProps);
   return {
     value: state[ownProps.name],
   };

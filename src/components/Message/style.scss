@@ -2,18 +2,69 @@
 
 
 .message {
-  font-size: .8em;
+  font-size: 1em;
   margin-bottom: v.$gutter * 2;
   &__author {
     margin-left: v.$gutter * 2;
     margin-bottom: v.$gutter;
   }
   &__content {
+    position: relative;
+    animation: pop .5s cubic-bezier(0.63, -0.02, 0.57, 1.57);
     background-color: white;
     padding: v.$gutter * 2 v.$gutter * 1.5;
     border-radius: 50px;
     display: inline-block;
     min-width: 150px;
     color: v.$color-blue;
+    &::before {
+      display: block;
+      position: absolute;
+      content: "";
+      width: 0;
+      height: 0;
+      border-color: transparent transparent rgb(90, 148, 214);
+      border-style: solid;
+      border-top : 15px solid  rgb(90, 148, 214);
+      border-right : 9px solid transparent;
+      border-left : 21px solid transparent;
+      border-width: 20px 20px 0px;
+      top: -10px;
+      left: 30px;
+    }
+  }
+  &--is-mine {
+    text-align: right;
+    & .message__content {
+      background-color: rgb(90, 148, 214);
+      color: white;
+      &::before {
+        display: block;
+        position: absolute;
+        content: "";
+        width: 0;
+        height: 0;
+        border-color: transparent transparent white;
+        border-style: solid;
+        border-top : 15px solid white;
+        border-right : 9px solid transparent;
+        border-left : 21px solid transparent;
+        border-width: 20px 20px 0px;
+        top: -10px;
+        left: auto;
+        right: 30px;
+      }
+    }
+  }
+}
+
+@keyframes pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
   }
 }
